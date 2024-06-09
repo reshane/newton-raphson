@@ -16,6 +16,22 @@ impl QuadraticFunction {
     }
 }
 
+struct CubicFunction {
+    a: f32,
+    b: f32,
+    c: f32,
+    d: f32,
+}
+
+impl CubicFunction {
+    fn fx(&self, x: f32) -> f32 {
+        (self.a * (x * x * x)) + (self.b *  (x * x)) + (self.c * x) + self.d
+    }
+    fn fdx(&self, x: f32) -> f32 {
+        (3.0 * (self.a * (x * x))) + (2.0 * (self.b * x)) + self.c
+    }
+}
+
 const SCREEN_WIDTH: f32 = 1280.0;
 const SCREEN_HEIGHT: f32 = 960.0;
 const X_SCALE: f32 = 20.0;
@@ -29,8 +45,8 @@ fn main() {
         .title("Hello Newton Raphson")
         .build();
 
-    let fun = QuadraticFunction {
-        a: 3.0, b: 10.0, c: -10.0
+    let fun = CubicFunction {
+        a: 1.0, b: 1.0, c: 0.0, d: 0.0
     };
 
     let mut x: f32 = 5.0;
